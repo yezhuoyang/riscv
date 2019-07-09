@@ -138,8 +138,6 @@ public:
         }
         for(int i=0;i<32;++i) reg[i]=0;
     }
-
-
     /*
      *  Write the bitset to the register p
      */
