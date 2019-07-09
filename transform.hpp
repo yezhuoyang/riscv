@@ -6,6 +6,7 @@
 #define RISCV_TRANSFORM_HPP
 using namespace std;
 
+#include <bitset>
 
 /*
  * Compare two bitset as unsigned numbers.
