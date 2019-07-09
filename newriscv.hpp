@@ -150,24 +150,6 @@ public:
     void visit(const int&p){
         V[p/4]++;
     }
-    void show_V_rank(){
-        ins* rank=new ins[Size];
-        for(int i=0;i<Size;++i){
-            rank[i].time=V[i];
-            rank[i].pos=i;
-        }
-        sort(rank,rank+Size);
-        int pre=rank[0].time;
-        for(int i=0;i<Size;++i){
-            if(rank[i].time!=pre){
-                cout<<endl;
-                pre=rank[i].time;
-            }
-            cout<<hex<<rank[i].pos*4<<": "<<dec<<rank[i].time<<" ";
-        }
-        cout<<endl;
-        delete [] rank;
-    }
     /*
      * Read the register p to the bitset B
      */
