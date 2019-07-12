@@ -31,7 +31,6 @@ bitset<32> add(const bitset<32> &A,const bitset<32> &B) {
     }
     return tmp;
 }
-
 /*
  * Get the interger formed by the lower five bit of A
  */
@@ -43,8 +42,6 @@ int lower_five(const bitset<32> &A){
     }
     return tmp;
 }
-
-
 /*
  * Take the negation of B
  */

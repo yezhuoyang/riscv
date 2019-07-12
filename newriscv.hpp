@@ -4,8 +4,10 @@
 
 #ifndef RISCV_NEWRISCV_HPP
 #define RISCV_NEWRISCV_HPP
+#include "transform.hpp"
+#include <map>
 
-#include "const.h"
+
 
 using namespace std;
 extern string regname[32];
@@ -37,7 +39,6 @@ private:
     int E2;
     int T;
 public:
-
     Riscv(int* const S):storage(S){}
     void initial(){
         char tmp;
@@ -86,12 +87,11 @@ public:
             if(tmp==EOF){
                 break;
             }
-
         }
-        for(int i=0;i<32;++i) reg[i]=0;
+        for(int i=0;i<32;++i){
+            reg[i]=0;
+        }
     }
-
-
     Riscv(const char* filename,int* const  S):storage(S){
         char tmp;
         char readin[9];
@@ -136,7 +136,9 @@ public:
             }
             tmp=fgetc(infile);
         }
-        for(int i=0;i<32;++i) reg[i]=0;
+        for(int i=0;i<32;++i){
+            reg[i]=0;
+        }
     }
     /*
      *  Write the bitset to the register p
@@ -154,8 +156,6 @@ public:
     void read_reg(const int& p,int &B) const{
         B=reg[p];
     }
-
-
     void write(const int& pos,const int&B){
         if(pos%4){
             cout<<"unaligned!"<<endl;
@@ -164,6 +164,7 @@ public:
             storage[pos/4]=B;
         }
     }
+
 
     void read(const  int& pos,int&    B){
         if(pos%4){
@@ -178,8 +179,6 @@ public:
             B=storage[pos/4];
         }
     }
-
-
     /*
      * Write a bitset of length 32 into the storage
      */
@@ -253,6 +252,7 @@ public:
         change_to_char(opt,T);
         cout<<opt<<endl;
     }
+
     void print_reg() const{
         for(int i=0;i<32;++i){
             if(!reg[i])continue;
@@ -260,15 +260,19 @@ public:
         }
         cout<<endl;
     }
+
     void print_reg(int k){
         cout<<regname[k]<<":"<<dec<<reg[k]<<" "<<endl;
     }
+
     int print_ans() const{
         return ((unsigned int)reg[10])&255;
     }
+
     int getreg(const int&k){
         return reg[k];
     }
+
     int read_storage(int k){
         bitset<32> B;
         int tmp;
@@ -276,9 +280,12 @@ public:
         to_num(B,tmp);
         return tmp;
     }
+
     ~Riscv(){
         //fclose(infile);
     }
+
+
 };
 
 
